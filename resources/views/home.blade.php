@@ -8,7 +8,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                     <h1>Products</h1></div>
+                     <h1>Nabídka produktů</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -19,6 +19,7 @@
                 </div>
             </div>
 
+<!--Show products -->
      <div class="row m-2">
           @foreach($products as $product)
   <div class="product col-m-3 m-3">
@@ -36,8 +37,7 @@
         <button class="delete-modal btn btn-danger" data-id="{{ $product -> product_id }}" data-title="" data-content="">
                                    <span class="glyphicon glyphicon-trash"></span> Odstranit</button>
 
-
-        <!-- modal -->
+<!-- modal -->
         <div id="deleteModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
               <div class="modal-content">
@@ -47,7 +47,7 @@
                   </div>
 
                       <h3 class="text-center">Určitě chcete tento produkt vymazat?</h3>
-                      <br />
+                      <br/>
                       <form class="form-horizontal" role="form">
                           <div class="form-group">
                               <div class="col-sm-10">
@@ -63,12 +63,10 @@
                               <span class='glyphicon glyphicon-remove'></span> Zavřít
                           </button>
                       </div>
-
               </div>
           </div>
       </div>
-
-
+<!--end of modal -->
 
       </div>
     </div>
@@ -77,30 +75,25 @@
 
   </div>
 
-
+<!--Add new product -->
 <div class="add_product m-4">
-     <h4>    Add product</h4>
+     <h4>Přidat nový produkt</h4>
      <form method="post">
            {{ csrf_field() }}
-  <div class="form-group">
+               <div class="form-group">
 
-    <label for="product_name">Product name</label>
-    <input type="text" class="form-control" name="product_name"  placeholder="">
-  </div>
-  <div class="form-group">
-    <label for="price">Price</label>
-    <input type="integer" class="form-control" name="price" placeholder="">
-       <input type="hidden" value="{{ Session::token() }}" name="_token">
+                    <label for="product_name">Název produktu</label>
+                    <input type="text" class="form-control" name="product_name"  placeholder="">
+               </div>
+               <div class="form-group">
+                    <label for="price">Cena produktu</label>
+                    <input type="integer" class="form-control" name="price" placeholder="">
+                    <input type="hidden" value="{{ Session::token() }}" name="_token">
+               </div>
 
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
 </div>
-
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -111,10 +104,7 @@
    <!-- toastr notifications -->
    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-
-
 <script>
-
 
 $(document).ready(function(){
 
@@ -140,7 +130,6 @@ $(document).ready(function(){
 
 
 var deleted_product = null;
-
 $(document).on('click', '.delete-modal', function() {
      deleted_product = $(this).closest('.product');
           $('#id_delete').val($(this).data('id'));
@@ -169,10 +158,6 @@ $(document).on('click', '.delete-modal', function() {
 
 });
 
-
-
  </script>
-
-
 
 @endsection

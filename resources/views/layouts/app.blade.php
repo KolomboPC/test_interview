@@ -20,22 +20,16 @@
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Eshop') }}
                     </a>
                 </div>
 
-
                     <!-- Left Side Of Navbar -->
                     <ul class="nav ">
                         &nbsp;
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
 
                         <!-- Authentication Links -->
                         @guest
@@ -60,6 +54,7 @@
         </nav>
 
         @yield('content')
+        
     </div>
 
     <!-- Scripts -->

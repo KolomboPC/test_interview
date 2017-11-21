@@ -28,6 +28,7 @@ Route::post('/delete/{id}', 'ControllerProduct@delete_product');
 Route::post('/buy', 'ControllerOrder@buy_product');
 
 Route::get('/edit/{id}' , 'ControllerProduct@get_info_product');
+
 Route::post('/edit/{id}', 'ControllerProduct@update_product');
 
 Route::get('/kos', 'ControllerOrder@review_order');

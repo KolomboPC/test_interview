@@ -14,6 +14,8 @@ use App\Order;
 
 class ControllerOrder extends Controller
 {
+
+//add product to basket
     public static function buy_product() {
          $id = $_POST['id'];
          $user_id = $_POST['user'];
@@ -24,6 +26,7 @@ class ControllerOrder extends Controller
          return redirect()->action('ControllerProduct@get_product');
     }
 
+//to see items in the basket
     public static function review_order() {
 
          $user_id = Auth::User() -> id;
@@ -41,14 +44,11 @@ class ControllerOrder extends Controller
          }
          //dd($total_value);
 
-          //$total_price = $order=>[price];
-        // dd($total_price);
-
-         //$order = Basket::with('Product')->get
+     
 
          return view('basket', ['products'=>$order], ['total_price'=> $total_value]);
     }
-
+//delete items from basket
     public static function delete_from_basket($id) {
           $request = request();
           $order = Basket::where('product_id', $id)->first();
@@ -57,6 +57,7 @@ class ControllerOrder extends Controller
           return redirect ()->action('ControllerOrder@review_order');
     }
 
+//place an order
     public static function place_order() {
          $id = Auth::User() -> id;
          $request = request();
@@ -72,11 +73,8 @@ class ControllerOrder extends Controller
         //return redirect()->action('ControllerOrder@overwiev_order');
         return view('submit_order');
     }
-/*
-    public static function overwiev_order() {
-         return view('submit_order');
-    }
-*/
+
+   //to see placed order
     public static function placed_order_review() {
          $id = Auth::User() -> id;
          $review = Basket::leftJoin( 'products' ,'baskets.product_id', '=', 'products.product_id')->where('user_id', $id)->get();
@@ -84,8 +82,6 @@ class ControllerOrder extends Controller
          //dd($order);
          return view('orderoverview',['reviews'=>$review], ['order'=>$order]);
 
-         //return redirect()->action('ControllerOrder@placed_order_review',['order'=>$order], ['review'=>$review]);
     }
-
 
 }

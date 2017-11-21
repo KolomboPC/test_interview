@@ -7,7 +7,7 @@
                Zboží v košíku
           </div>
           <div class="m-3">
-          <a href="/home" class="btn btn-success">Pokračovat v nákupu</a>
+               <a href="/home" class="btn btn-success">Pokračovat v nákupu</a>
           </div>
      <div class="card-body">
 
@@ -17,15 +17,9 @@
           <div class="order_view">
                <h4 class="card-title">{{ $product -> product_name }}</h4>
                <p class="card-text">{{ $product -> price}} kč</p>
-
-
-          <!-- Button trigger modal -->
-<button type="button" class=" delete btn btn-danger m-2" data-toggle="modal" data-target="#exampleModal-{{ $product->product_id }}" data_id ="{!! $product -> product_id !!}">
- Odstranit
-</button>
-
-</div>
-
+<!-- Button trigger modal -->
+               <button type="button" class=" delete btn btn-danger m-2" data-toggle="modal" data-target="#exampleModal-{{ $product->product_id }}" data_id ="{!! $product -> product_id !!}">Odstranit</button>
+          </div>
 
 <!-- Modal -->
 <div class="exampleModal modal fade" id="exampleModal-{{ $product->product_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,16 +36,13 @@
           <div class="modal-body">
                     <input type="hidden" name="edit_email" value="{{ $product -> product_id }}">
           </div>
-
                <button  style="margin:10px" type="submit" class="btn btn-primary ">Smazat</button>
                <br>
-
-          </form>
-    </div>
- </div>
+               </form>
+          </div>
+     </div>
 </div>
 <!--end of modal -->
-
 @endforeach
 
           <h4>Celková cena = {{ $total_price }} kč</h4>
@@ -59,37 +50,35 @@
      </div>
 </div>
 
+<!--hidden form for placing order-->
 <div class="order_form" style="display:none">
-<form method="POST">
+     <form method="POST">
       {{ csrf_field() }}
-  <div class="form-row">
 
-
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Jméno Firmy</label>
-    <input type="text" class="form-control" id="inputAddress"  name="company_name" >
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Ulice</label>
-    <input type="text" class="form-control" id="inputAddress2"  name="street_address">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Město</label>
-      <input type="text" class="form-control" id="inputCity" name="city_address">
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">PSČ</label>
-      <input type="text" class="form-control" id="inputZip" name="postcode_address">
-    </div>
-  </div>
-     <input type="hidden" name="status" value="objednávka přijata">
-     <input type="hidden" name="total_price" value="{{ $total_price }} ">
-  <button type="submit" class="btn btn-primary">Objednat</button>
-</form>
+          <div class="form-group">
+               <label for="inputAddress">Jméno Firmy</label>
+               <input type="text" class="form-control" id="inputAddress"  name="company_name" >
+          </div>
+          <div class="form-group">
+               <label for="inputAddress2">Ulice</label>
+               <input type="text" class="form-control" id="inputAddress2"  name="street_address">
+          </div>
+          <div class="form-row">
+          <div class="form-group col-md-6">
+               <label for="inputCity">Město</label>
+               <input type="text" class="form-control" id="inputCity" name="city_address">
+          </div>
+          <div class="form-group col-md-2">
+               <label for="inputZip">PSČ</label>
+               <input type="text" class="form-control" id="inputZip" name="postcode_address">
+          </div>
+          </div>
+               <input type="hidden" name="status" value="objednávka přijata">
+               <input type="hidden" name="total_price" value="{{ $total_price }} ">
+               <button type="submit" class="btn btn-primary">Objednat</button>
+     </form>
 </div>
-
+<!--end of form-->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 

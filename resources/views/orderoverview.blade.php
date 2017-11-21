@@ -13,9 +13,11 @@
 <div class="products">
      @foreach($reviews as $review)
           <div class="">
-               <p><strong>{{ $review -> product_name }} </strong>  Cena:  {{ $review -> price }} Kč</p>
+               <p><strong>{{ $review -> product_name }} </strong> - Cena:  {{ $review -> price }} Kč</p>
           </div>
      @endforeach
+     <br>
+     <br>
      <p><strong>Cena celkem: </strong> {{ $order -> total_price }} Kč</p>
 </div>
 

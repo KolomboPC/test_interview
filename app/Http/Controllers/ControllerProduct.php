@@ -12,12 +12,14 @@ use App\Basket;
 
 class ControllerProduct extends Controller
 {
+     //show all product
      public static function get_product() {
           $products = Product::all();
           //dd($products);
           return view('home', ['products' => $products]);
      }
 
+//adding product
     public static function add_product() {
           $request = request();
           $product = new Product;
@@ -27,6 +29,7 @@ class ControllerProduct extends Controller
           return redirect()->action('ControllerProduct@get_product');
     }
 
+//delete product
     public static function delete_product($id) {
          $product = Product::where('product_id',$id)->first();
          $basket = Basket::where('product_id', $id)->first();
@@ -37,15 +40,16 @@ class ControllerProduct extends Controller
              $basket->delete();
         };
          return view('delete');
-         //return redirect()->action('ControllerProduct@get_product');
     }
 
+// show info about each product
     public static function get_info_product($id) {
          $products = Product::where('product_id', $id)->first();
         // dd($product);
          return view('edit', ['product' => $products]);
     }
 
+//update product
     public static function update_product($id) {
          //dd($id);
          $request = request();
@@ -56,6 +60,5 @@ class ControllerProduct extends Controller
          $product->save();
           return redirect()->action('ControllerProduct@get_product');
     }
-
 
 }
